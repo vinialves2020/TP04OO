@@ -157,7 +157,9 @@ public class TelaPrincipal extends JFrame{
         
         JPanel paneldespesa =new JPanel();
         paneldespesa.setLayout(new GridBagLayout());
-        paneldespesa.setBackground(centro);
+        paneldespesa.setBackground(centro.darker());
+        paneldespesa.setBorder(javax.swing.BorderFactory.createLineBorder(Color.black));
+       
         JLabel custLabelD= new JLabel("Despesas ",JLabel.CENTER);
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -216,7 +218,7 @@ public class TelaPrincipal extends JFrame{
         gbc.ipady = 0;      
         gbc.weighty = 1.0;   
         gbc.anchor = GridBagConstraints.LAST_LINE_START; 
-        gbc.insets = new Insets(60,0,0,0);  
+        gbc.insets = new Insets(40,0,0,0);  
         paneldespesa.add(despesaButton,gbc);
         gbc.insets = new Insets(0,0,0,0);
 
@@ -227,7 +229,7 @@ public class TelaPrincipal extends JFrame{
         gbc.ipady = 0;      
         gbc.weighty = 1.0;   
         gbc.anchor = GridBagConstraints.LAST_LINE_START; 
-        gbc.insets = new Insets(60,0,0,0);  
+        gbc.insets = new Insets(20,0,0,0);  
         paneldespesa.add(apagardespesa,gbc);
         gbc.insets = new Insets(0,0,0,0);
 
@@ -235,7 +237,9 @@ public class TelaPrincipal extends JFrame{
         
         JPanel panelabastecimento =new JPanel();
         panelabastecimento.setLayout(new GridBagLayout());
-        panelabastecimento.setBackground(centro);
+        panelabastecimento.setBackground(centro.darker());
+        panelabastecimento.setBorder(javax.swing.BorderFactory.createLineBorder(Color.black));
+        
         JLabel custLabelA= new JLabel("Abastecimentos",JLabel.CENTER);
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -289,7 +293,7 @@ public class TelaPrincipal extends JFrame{
         gbc.ipady = 0;      
         gbc.weighty = 1.0;   
         gbc.anchor = GridBagConstraints.LAST_LINE_START; 
-        gbc.insets = new Insets(60,0,0,0);  
+        gbc.insets = new Insets(40,0,0,0);  
         panelabastecimento.add(abasteciButton,gbc);
         gbc.insets = new Insets(0,0,0,0);
         JButton apagarAbastec = new JButton("Apagar Abastecimento");
@@ -299,13 +303,14 @@ public class TelaPrincipal extends JFrame{
         gbc.ipady = 0;      
         gbc.weighty = 1.0;   
         gbc.anchor = GridBagConstraints.LAST_LINE_START; 
-        gbc.insets = new Insets(60,0,0,0);  
+        gbc.insets = new Insets(20,0,0,0);  
         panelabastecimento.add(apagarAbastec,gbc);
         gbc.insets = new Insets(0,0,0,0);
         
         JPanel panelmanu =new JPanel();
         panelmanu.setLayout(new GridBagLayout());
-        panelmanu.setBackground(centro);
+        panelmanu.setBackground(centro.darker());
+        panelmanu.setBorder(javax.swing.BorderFactory.createLineBorder(Color.black));
         JLabel custLabelM= new JLabel("Manutenções",JLabel.CENTER);
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -359,7 +364,7 @@ public class TelaPrincipal extends JFrame{
         gbc.ipady = 0;      
         gbc.weighty = 1.0;   
         gbc.anchor = GridBagConstraints.LAST_LINE_START; 
-        gbc.insets = new Insets(60,0,0,0);  
+        gbc.insets = new Insets(40,0,0,0);  
         panelmanu.add(manuButton,gbc);
         gbc.insets = new Insets(0,0,0,0);
         JButton apagarmanutencao = new JButton("Apagar Manutenção");
@@ -369,7 +374,7 @@ public class TelaPrincipal extends JFrame{
         gbc.ipady = 0;      
         gbc.weighty = 1.0;   
         gbc.anchor = GridBagConstraints.LAST_LINE_START; 
-        gbc.insets = new Insets(60,0,0,0);  
+        gbc.insets = new Insets(20,0,0,0);  
         panelmanu.add(apagarmanutencao,gbc);
         gbc.insets = new Insets(0,0,0,0);
 

@@ -38,6 +38,7 @@ public class TelaCarros {
     Font fonte = new Font("Courier New",Font.BOLD,20);
     private static String nomeCarro;
     static Font fonte1 = new Font("Courier New",Font.PLAIN,15);
+    static Font fontec = new Font("Courier New",Font.PLAIN,35);
     
 /**
  * O metodo CriaTelaCarros cria um frame que envia as informacoes para o acesso ou criacao de um carro
@@ -69,40 +70,44 @@ public class TelaCarros {
         cadastrarcarros.setFont(fonte1);
         panel.add(cadastrarcarros);
 
+        Carro1.setBounds(20, 100, 550, 200);
+        Carro2.setBounds(20, 310, 550, 200);
+        Carro3.setBounds(20, 520, 550, 200);
+        Carro1.setFont(fontec);
+        
+        Carro2.setFont(fontec);
+        Carro3.setFont(fontec);
+        Carro1.setText("<html>Nome: "+infocarros.get(0)+"\n"+"<br />Marca: "+infocarros.get(1)+"\n"+"<br />Modelo: "+infocarros.get(2)+"</html>" );
+        Carro2.setText("<html>Nome: "+infocarros.get(4)+"\n"+"<br />Marca: "+infocarros.get(5)+"\n"+"<br />Modelo: "+infocarros.get(6)+"</html>");
+        Carro3.setText("<html>Nome: "+infocarros.get(8)+"\n"+"<br />Marca: "+infocarros.get(9)+"\n"+"<br />Modelo: "+infocarros.get(10)+"</html>");
+        
+        
+        Carro1.setFocusable(false);
+        Carro1.setBorder(javax.swing.BorderFactory.createLineBorder(Color.black));
+        Carro1.setBackground(centro.darker());
+    
+        
+        Carro2.setFocusable(false);
+        Carro2.setBorder(javax.swing.BorderFactory.createLineBorder(Color.black));
+        Carro2.setBackground(centro.darker());
+        
+        
+        Carro3.setFocusable(false);
+        Carro3.setBorder(javax.swing.BorderFactory.createLineBorder(Color.black));
+        Carro3.setBackground(centro.darker());
+
         switch(Carro.getContador()){
             case 1:
-            Carro1.setBounds(20, 100, 250, 30);
-            Carro1.setText(infocarros.get(0)+"/"+infocarros.get(1)+"/"+infocarros.get(2));
-            Carro1.setFont(fonte1);
             panel.add(Carro1);
-            System.out.println("1");
             break;
             case 2:
-            Carro1.setBounds(20, 100, 250, 30);
-            Carro1.setFont(fonte1);
-            Carro1.setText(infocarros.get(0)+"/"+infocarros.get(1)+"/"+infocarros.get(2));
             panel.add(Carro1);
-            Carro2.setBounds(20, 150, 250, 30);
-            Carro2.setFont(fonte1);
-            Carro2.setText(infocarros.get(4)+"/"+infocarros.get(5)+"/"+infocarros.get(6));
             panel.add(Carro2);
-            System.out.println("2");
             break;
             case 3:
-            Carro1.setBounds(20, 100, 250, 30);
-            Carro1.setFont(fonte1);
-            Carro1.setText(infocarros.get(0)+"/"+infocarros.get(1)+"/"+infocarros.get(2));
             panel.add(Carro1);
-            Carro2.setBounds(20, 150, 250, 30);
-            Carro2.setFont(fonte1);
-            Carro2.setText(infocarros.get(4)+"/"+infocarros.get(5)+"/"+infocarros.get(6));
             panel.add(Carro2);
-            Carro3.setBounds(20, 200, 250, 30);
-            Carro3.setText(infocarros.get(8)+"/"+infocarros.get(9)+"/"+infocarros.get(10));
-            Carro3.setFont(fonte1);
             panel.add(Carro3);
-            System.out.println("3");
-            
             break;
         }
         frame.add(panel);
