@@ -3,6 +3,8 @@ package TP04;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
+import java.text.DecimalFormat;
+
 import javax.swing.*;
 
 public class TelaPrincipal extends JFrame{
@@ -22,6 +24,11 @@ public class TelaPrincipal extends JFrame{
     String valorTGdia ;
     String valorTdespesa ;
     String valorTddia ;
+    float odometrofloat;
+    String odometroF;
+    String odometroD;
+    String odometroA;
+    String odometroM;
     String valorTabast ;
     String valorTAdia ;
     String valorTmanu ;
@@ -60,16 +67,27 @@ public class TelaPrincipal extends JFrame{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        try {
+            carros.pegarvalorodometro();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
        
         valorTgeralfloat= telaDespesa.getValorcalc() + telaManutencao.getValorcalcM() + telaaAbastecimento.getValorcalcA();
         valorTgeral = Float.toString(valorTgeralfloat);
-        valorTGdia= Float.toString(valorTgeralfloat/30);
+        valorTGdia= new DecimalFormat(".#").format(valorTgeralfloat/30);
         setValorTdespesa( Float.toString(telaDespesa.despesafinal));
-        setValorTddia(Float.toString(telaDespesa.despesafinal/30));
+        setValorTddia(new DecimalFormat(".#").format(telaDespesa.despesafinal/30));
         setValorTabast(Float.toString(telaaAbastecimento.Abastfinal));
-        setValorTAdia(Float.toString(telaaAbastecimento.Abastfinal/30));
+        setValorTAdia(new DecimalFormat(".#").format(telaaAbastecimento.Abastfinal/30));
         setValorTmanu(Float.toString(telaManutencao.manufinal));
-        setValorTMdia(Float.toString(telaManutencao.manufinal/30));
+        setValorTMdia(new DecimalFormat(".#").format(telaManutencao.manufinal/30));
+        odometrofloat = Float.parseFloat(carros.getOdomentro());
+        odometroD = ( new DecimalFormat(".#").format(telaDespesa.despesafinal/odometrofloat));
+        odometroA = ( new DecimalFormat(".#").format(telaaAbastecimento.Abastfinal/odometrofloat));
+        odometroM = ( new DecimalFormat(".#").format(telaManutencao.manufinal/odometrofloat));
+        odometroF = (new DecimalFormat(".#").format(valorTgeralfloat/odometrofloat));
         
         
     }
@@ -187,7 +205,7 @@ public class TelaPrincipal extends JFrame{
         gbc.gridy = 1;
         kmLabeD.setFont(fonte1);
         paneldespesa.add(kmLabeD,gbc);
-        JLabel valorTD= new JLabel(valorTdespesa,JLabel.CENTER);
+        JLabel valorTD= new JLabel("R$:"+valorTdespesa,JLabel.CENTER);
         gbc.insets = new Insets(0,0,0,0); 
         gbc.ipadx= 0;
         gbc.ipady= 0;
@@ -195,7 +213,7 @@ public class TelaPrincipal extends JFrame{
         gbc.gridy = 2;
         valorTD.setFont(fonte1);
         paneldespesa.add(valorTD,gbc);
-        JLabel valorDD= new JLabel(valorTddia,JLabel.CENTER);
+        JLabel valorDD= new JLabel("R$:"+valorTddia,JLabel.CENTER);
         gbc.insets = new Insets(0,20,0,50); 
         gbc.ipadx= 0;
         gbc.ipady= 0;
@@ -203,7 +221,7 @@ public class TelaPrincipal extends JFrame{
         gbc.gridy = 2;
         valorDD.setFont(fonte1);
         paneldespesa.add(valorDD,gbc);
-        JLabel valorkmD= new JLabel("---",JLabel.CENTER);
+        JLabel valorkmD= new JLabel("R$:"+odometroD,JLabel.CENTER);
         gbc.ipadx= 0;
         gbc.ipady= 0;
         gbc.gridx = 2;
@@ -267,7 +285,7 @@ public class TelaPrincipal extends JFrame{
         gbc.gridy = 1;
         kmLabelA.setFont(fonte1);
         panelabastecimento.add(kmLabelA,gbc);
-        JLabel valorTA= new JLabel(valorTabast,JLabel.CENTER);
+        JLabel valorTA= new JLabel("R$:"+valorTabast,JLabel.CENTER);
         gbc.insets = new Insets(0,0,0,0); 
         gbc.ipadx= 0;
         gbc.ipady= 0;
@@ -275,13 +293,13 @@ public class TelaPrincipal extends JFrame{
         gbc.gridy = 2;
         valorTA.setFont(fonte1);
         panelabastecimento.add(valorTA,gbc);
-        JLabel valorDA= new JLabel(valorTAdia,JLabel.CENTER);
+        JLabel valorDA= new JLabel("R$:"+valorTAdia,JLabel.CENTER);
         gbc.insets = new Insets(0,20,0,50); 
         gbc.gridx = 1;
         gbc.gridy = 2;
         valorDA.setFont(fonte1);
         panelabastecimento.add(valorDA,gbc);
-        JLabel valorkmA= new JLabel("---",JLabel.CENTER);
+        JLabel valorkmA= new JLabel("R$:"+odometroA,JLabel.CENTER);
         gbc.gridx = 2;
         gbc.gridy = 2;
         valorkmA.setFont(fonte1);
@@ -338,7 +356,7 @@ public class TelaPrincipal extends JFrame{
         gbc.gridy = 1;
         kmLabelM.setFont(fonte1);
         panelmanu.add(kmLabelM,gbc);
-        JLabel valorTM= new JLabel(valorTmanu,JLabel.CENTER);
+        JLabel valorTM= new JLabel("R$:"+valorTmanu,JLabel.CENTER);
         gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx= 0;
         gbc.ipady= 0;
@@ -346,13 +364,13 @@ public class TelaPrincipal extends JFrame{
         gbc.gridy = 2;
         valorTM.setFont(fonte1);
         panelmanu.add(valorTM,gbc);
-        JLabel valorDM= new JLabel(valorTMdia,JLabel.CENTER);
+        JLabel valorDM= new JLabel("R$:"+valorTMdia,JLabel.CENTER);
         gbc.insets = new Insets(0,20,0,50);
         gbc.gridx = 1;
         gbc.gridy = 2;
         valorDM.setFont(fonte1);
         panelmanu.add(valorDM,gbc);
-        JLabel valorkmM= new JLabel("---",JLabel.CENTER);
+        JLabel valorkmM= new JLabel("R$:"+odometroM,JLabel.CENTER);
         gbc.gridx = 2;
         gbc.gridy = 2;
         valorkmM.setFont(fonte1);
@@ -405,7 +423,7 @@ public class TelaPrincipal extends JFrame{
         gbc.gridy = 1;
         kmLabel.setFont(fonte1);
         panelgera.add(kmLabel,gbc);
-        JLabel valorT= new JLabel(valorTgeral,JLabel.CENTER);
+        JLabel valorT= new JLabel("R$:"+valorTgeral,JLabel.CENTER);
         gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx= 0;
         gbc.ipady= 0;
@@ -413,13 +431,13 @@ public class TelaPrincipal extends JFrame{
         gbc.gridy = 2;
         valorT.setFont(fonte1);
         panelgera.add(valorT,gbc);
-        JLabel valorD= new JLabel(valorTGdia,JLabel.CENTER);
+        JLabel valorD= new JLabel("R$:"+valorTGdia,JLabel.CENTER);
         gbc.insets = new Insets(0,20,0,50);
         gbc.gridx = 1;
         gbc.gridy = 2;
         valorD.setFont(fonte1);
         panelgera.add(valorD,gbc);
-        JLabel valorkm= new JLabel("---",JLabel.CENTER);
+        JLabel valorkm= new JLabel("R$:"+odometroF,JLabel.CENTER);
         gbc.ipadx= 0;
         gbc.ipady= 0;
         gbc.gridx = 2;

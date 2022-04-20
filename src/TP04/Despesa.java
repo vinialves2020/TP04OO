@@ -98,7 +98,7 @@ public void cadastrarData() {
  * atribui true ou false dependendo do resultado a variavel validador
  */
 public boolean ValidarDepesa(String data, String odometro,String valorString ,String tipo) {
-    if( data.matches("[0-9]*") && odometro.matches("[0-9]*")&& valorString.matches("[0-9]*") && tipo.matches("[a-zA-Z]*") ){
+    if( data.matches("[0-9]*") && odometro.matches("[0-9]*")&& valorString.matches("[0-9]*") && tipo.matches("[a-zA-Z]*")){
         
 
         try {

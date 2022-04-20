@@ -88,11 +88,7 @@ public class TelaAbastecimento extends TelaPrincipal {
         cadastrarbButton.setBounds(140,480,160,30);
         JButton voltarButton = new JButton("Voltar");
         voltarButton.setBounds(320,480,160,30);
-        JTextArea areateste = new JTextArea("asasas");
-        areateste.setBounds(320,560,160,60);
-        areateste.setEditable(false);
         
-        cadastroPanel.add(areateste);
         cadastroPanel.add(cadastrarbButton);
         cadastroPanel.add(voltarButton);
         cadastroPanel.add(dataLabel);
@@ -119,10 +115,11 @@ public class TelaAbastecimento extends TelaPrincipal {
                     String odomeString = odometroTextField.getText();
                     String tipoString = tipodespTextField.getText();
                     String valorString = valordespTextField.getText();
+                    carro.salvarOdometro(odomeString);
                     abastecimento.ValidarAbastecimento(dataString, odomeString, valorString, tipoString);
                     
 
-                    if (abastecimento.getValidador() == true){
+                    if (abastecimento.getValidador() == true && carro.getValiodometro() == true){
                         
                     
                         a.add(dataString);
@@ -133,6 +130,9 @@ public class TelaAbastecimento extends TelaPrincipal {
                         abastecimentos.add(odomeString);
                         abastecimentos.add(tipoString);
                         abastecimentos.add(Float.toString(abastecimento.getcalc()));
+                        carro.salvarOdometro(odomeString);
+                        frame.dispose();
+                        telaPrincipal.criarTelaPrincipal();
                     }
                     
                     abastecimento.salvarValorAbastecimento();
@@ -140,8 +140,7 @@ public class TelaAbastecimento extends TelaPrincipal {
                     odometroTextField.setText("");
                     tipodespTextField.setText("");
                     valordespTextField.setText("");
-                    frame.dispose();
-                    telaPrincipal.criarTelaPrincipal();
+                    
             }});
             voltarButton.addActionListener(new ActionListener(){
                 public void actionPerformed(ActionEvent e)

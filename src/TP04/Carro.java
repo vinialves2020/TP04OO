@@ -15,13 +15,16 @@ public class Carro {
     private String modelo;
     private String odomentro;
     private boolean validador = false;
+    private boolean valiodometro = false;
     private static String nomeCarro;
+    static String valorodometro;
     static Usuario usuario= new Usuario();
     static String TempNome ="";
     static String TempMarca ="";
     static String TempModelo ="";
     static String Tempodometro ="";
     static String Temp ="";
+    static float Tempodo;
     static ArrayList<String> infocarros = new ArrayList<>(20);
     private static Scanner y;
     private static int contador;
@@ -42,6 +45,9 @@ public static String getNomeCarro() {
  */
 public static void setNomeCarro(String nomeCarro) {
     Carro.nomeCarro = nomeCarro;
+}
+public static void setValorodometro(String valorodometro) {
+    Carro. valorodometro =  valorodometro;
 }
 
 
@@ -66,7 +72,7 @@ public static void setContador(int contador) {
  * @return Retorno o valor de odometro
  */
 public String getOdomentro() {
-    return odomentro;
+    return valorodometro;
 }
 
 
@@ -208,6 +214,52 @@ public void ValidarCarro(String nome, String marca,String modelo ,String odometr
     }
     System.out.println(validador);
 }
+public void salvarOdometro(String odometrovalor){
+    try {
+        pegarvalorodometro();
+    } catch (IOException e1) {
+        // TODO Auto-generated catch block
+        e1.printStackTrace();
+    }
+    float valor = Float.parseFloat(odometrovalor);
+    if (valor  > Tempodo ){
+    System.out.println(valor + "--"+ Tempodo);
+    setValidador(true);
+    FileWriter VW = null;
+    try {
+        VW = new FileWriter("Usuarios/"+usuario.getUsuarioString()+"/Odometrocarro.txt");
+        VW.write(odometrovalor);
+        VW.close();
+    } catch (IOException e) {
+
+    }
+}
+    else {
+        setValidador(false);
+        JOptionPane.showMessageDialog(null, "Valor do Odometro Invalido");
+    }
+}
+public void pegarvalorodometro() throws IOException{
+    try {
+        StringBuilder content = new StringBuilder();
+        FileReader leitor= new FileReader("Usuarios/"+usuario.getUsuarioString()+"/Odometrocarro.txt");
+        int nextChar;
+    while ((nextChar = leitor.read()) != -1) {
+    content.append((char) nextChar);
+    }
+    
+    setValorodometro(String.valueOf(content));
+    Tempodo = Float.parseFloat(valorodometro);
+        
+        leitor.close();
+        
+    } catch (FileNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+
+}
 
 /** 
  * Atribui valor a variavel validador
@@ -222,5 +274,8 @@ private void setValidador(boolean validador) {
  */
 public boolean getValidador() {
     return validador;
+}
+public boolean getValiodometro() {
+    return valiodometro;
 }
 }

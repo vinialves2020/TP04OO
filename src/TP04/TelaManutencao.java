@@ -120,9 +120,9 @@ public class TelaManutencao extends TelaPrincipal {
                     String odomeString = odometroTextField.getText();
                     String tipoString = tipodespTextField.getText();
                     String valorString = valordespTextField.getText();
-                 
+                    carro.salvarOdometro(odomeString);
                     manutencao.ValidarManutencao(dataString, odomeString, valorString, tipoString);
-                    if(manutencao.getValidador()== true){
+                    if(manutencao.getValidador()== true && carro.getValiodometro() == true){
                         
                         a.add(dataString);
                         a.add(odomeString);
@@ -133,6 +133,9 @@ public class TelaManutencao extends TelaPrincipal {
                         manutencoes.add(tipoString);
                         manutencoes.add(Float.toString(manutencao.getcalc()));
                         salvarManutencao();
+                        carro.salvarOdometro(odomeString);
+                        frame.dispose();
+                        telaPrincipal.criarTelaPrincipal();
 
                     }
                     manutencao.salvarValorManutencao();
@@ -140,8 +143,7 @@ public class TelaManutencao extends TelaPrincipal {
                     odometroTextField.setText("");
                     tipodespTextField.setText("");
                     valordespTextField.setText("");
-                    frame.dispose();
-                    telaPrincipal.criarTelaPrincipal();
+                   
                     
                 
             }});

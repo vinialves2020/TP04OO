@@ -92,7 +92,7 @@ public class TelaCadastro {
 
                     carro.ValidarCarro(nomeString, marcasString, modeloString,odomeString);
                     if(carro.getValidador()==true){
-                    
+                    carro.salvarOdometro(odomeString);
                     carro.salvarCarros();
                 }
                 

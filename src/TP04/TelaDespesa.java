@@ -111,12 +111,11 @@ public class TelaDespesa extends TelaPrincipal {
                     String odomeString = odometroTextField.getText();
                     String tipoString = tipodespTextField.getText();
                     String valorString = valordespTextField.getText();
-                    //float valorfloat = Float.parseFloat(valorString);
-                    //valorcalc = valorcalc + valorfloat ;
+                    carro.salvarOdometro(odomeString);
                     despesa.ValidarDepesa(dataString, odomeString, valorString, tipoString);
                     
-
-                    if (despesa.getValidador() == true){
+                
+                    if (despesa.getValidador() == true && carro.getValiodometro() == true){
                         
                         telaDespesa.a.add(dataString);
                         telaDespesa.a.add(odomeString);
@@ -127,6 +126,10 @@ public class TelaDespesa extends TelaPrincipal {
                         telaDespesa.despesas.add(tipoString);
                         telaDespesa.despesas.add(Float.toString(despesa.getcalc()));
                         salvarDespesa();
+                        carro.salvarOdometro(odomeString);
+                        frame.dispose();
+                        telaPrincipal.criarTelaPrincipal();
+                        
                         
                     }
                     despesa.salvarValorDespesa();
@@ -135,8 +138,7 @@ public class TelaDespesa extends TelaPrincipal {
                     odometroTextField.setText("");
                     tipodespTextField.setText("");
                     valordespTextField.setText("");
-                    frame.dispose();
-                    telaPrincipal.criarTelaPrincipal();
+                   
                     
                     
             }});
